@@ -6,17 +6,9 @@ from fastapi import HTTPException
 from app.db import get_conn
 from app.main import create_note, delete_note, get_note, list_notes, update_note
 from app.model import NoteCreate, NoteUpdate
-from app.schema import SCHEMA_SQL
 
 
 class NotesApiTests(unittest.TestCase):
-    @classmethod
-    def setUpClass(cls):
-        with get_conn() as conn:
-            with conn.cursor() as cur:
-                cur.execute(SCHEMA_SQL)
-            conn.commit()
-
     def setUp(self):
         self.created_note_ids = []
 
